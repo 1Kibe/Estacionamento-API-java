@@ -1,9 +1,12 @@
 package com.ryan.estacionamento_0.service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ryan.estacionamento_0.domain.Cliente;
 import com.ryan.estacionamento_0.repository.ClienteRepository;
+import com.ryan.estacionamento_0.repository.filter.ClienteFilter;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,5 +35,9 @@ public class ClienteService {
 
     public void deletar(Integer id) {
         repository.deleteById(id);
+    }
+
+    public Page<Cliente> filtrar(ClienteFilter filter, Pageable pageable) {
+        return repository.filtrar(filter, pageable);
     }
 }
