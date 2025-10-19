@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ryan.estacionamento_0.domain.Caixa;
 import com.ryan.estacionamento_0.repository.CaixaRepository;
+import com.ryan.estacionamento_0.repository.filter.CaixaFilter;
 
 @Service
 public class CaixaService {
@@ -33,5 +36,9 @@ public class CaixaService {
 
     public void deletar(Integer id) {
         repository.deleteById(id);
+    }
+
+    public Page<Caixa> filtrar(CaixaFilter filter, Pageable pageable) {
+        return repository.filtrar(filter, pageable);
     }
 }

@@ -35,7 +35,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepositoryQuery { // implem
         CriteriaQuery<Usuario> criteria = builder.createQuery(Usuario.class); // cria CriteriaQuery para Usuario
         Root<Usuario> root = criteria.from(Usuario.class); // define a raiz (FROM Usuario)
 
-        List<Predicate> predicates = new ArrayList<>(); // lista para armazenar condições WHERE dinamicamente
+        List<Predicate> predicates = new ArrayList<>(); // lista para armazenar Econdições WHERE dinamicamente
 
         if (filter != null) { // verifica se o filtro foi fornecido
             if (filter.getId() != null && !filter.getId().isBlank()) { // se id foi passado e não é vazio
