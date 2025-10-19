@@ -1,21 +1,23 @@
 package com.ryan.estacionamento_0.domain;
 
-import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "endereco")  // nome da tabela no banco
-@Data                     // gera getters, setters, toString, equals e hashCode
-@NoArgsConstructor         // gera construtor sem argumentos
-@AllArgsConstructor        // gera construtor com todos os argumentos
+@Table(name = "endereco")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +29,9 @@ public class Endereco {
     private String cep;
     private String cidade;
     private String uf;
+
+    @OneToOne(mappedBy = "end", cascade = CascadeType.ALL)//cascade all em producao nao fassa 
+    @JsonIgnore // Evita referência circular na serialização JSON
+    private Cliente cliente;
 
 }

@@ -1,0 +1,28 @@
+🧾 Camada FILTER
+
+Essa classe (CoresFilter) representa os parâmetros que o usuário pode passar para filtrar os registros.
+Ela contém campos opcionais, e o repositório só usa aqueles que estiverem preenchidos.
+
+Código EXEMPLO:
+
+public class CoresFilter {
+private String id;
+private String codigoid;
+private String descricao;
+private String status;
+private Integer tenant;
+private Integer gtenant;
+private String usucriacao;
+private String usualteracao;
+@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+@Column(columnDefinition = "datetime")
+private OffsetDateTime datausucriacaode;
+@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+@Column(columnDefinition = "datetime")
+private OffsetDateTime datausucriacaoate;
+@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+@Column(columnDefinition = "datetime")
+private OffsetDateTime datagravacaode;
+@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+@Column(columnDefinition = "datetime")
+private OffsetDateTime datagravacaoate;

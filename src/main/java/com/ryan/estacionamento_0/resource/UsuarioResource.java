@@ -1,16 +1,21 @@
 package com.ryan.estacionamento_0.resource;
 
 import com.ryan.estacionamento_0.domain.Usuario;
+import com.ryan.estacionamento_0.repository.filter.UsuarioFilter;
 import com.ryan.estacionamento_0.service.UsuarioService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioResource {
 
     @Autowired
@@ -25,6 +30,11 @@ public class UsuarioResource {
     public ResponseEntity<Usuario> findById(@PathVariable Integer id) {
         Optional<Usuario> obj = service.findById(id);
         return obj.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/filtro")
+    public Page<Usuario> filtro(UsuarioFilter filter, Pageable pageable) {
+        return service.filtrar(filter, pageable);
     }
 
     @PostMapping

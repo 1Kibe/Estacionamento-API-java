@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -17,10 +18,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "cliente")  // nome da tabela no banco
-@Data                     // gera getters, setters, toString, equals e hashCode
-@NoArgsConstructor         // gera construtor sem argumentos
-@AllArgsConstructor        // gera construtor com todos os argumentos
+@Table(name = "cliente")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +32,10 @@ public class Cliente {
     private String telefone;
     private Date dataNasc;
     private String email;
+    private String plano;
 
     @OneToOne
+    @JoinColumn(name = "end_id", referencedColumnName = "id")
     private Endereco end;
 
     @OneToMany
@@ -40,4 +43,5 @@ public class Cliente {
     
     @Column(precision = 10, scale = 2)
     private BigDecimal limiteDeCompra;
+
 }

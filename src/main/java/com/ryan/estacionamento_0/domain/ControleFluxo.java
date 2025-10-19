@@ -1,14 +1,13 @@
 package com.ryan.estacionamento_0.domain;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,21 +24,15 @@ public class ControleFluxo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "veiculo_id")
+    @OneToOne
     private Veiculo veiculo;
+    
+    @OneToOne
+    private Cliente cliente;
 
-    @ManyToOne
-    @JoinColumn(name = "vaga_id")
-    private Vagas vaga;
-
-    @ManyToOne
-    @JoinColumn(name = "tabela_preco_id")
-    private TabelaPreco tabelaPreco;
-
-    private LocalDateTime entrada;
-
-    private LocalDateTime saida;
-
+    private OffsetDateTime entrada;
+    private OffsetDateTime saida;
     private BigDecimal valorCobrado;
+    private Boolean status;
+    private String tipo;
 }

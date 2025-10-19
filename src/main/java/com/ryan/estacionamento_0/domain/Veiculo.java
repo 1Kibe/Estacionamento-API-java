@@ -1,10 +1,10 @@
 package com.ryan.estacionamento_0.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -22,6 +22,7 @@ public class Veiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false)
     private String placa;
     private String marca;
     private String modelo;
@@ -29,7 +30,7 @@ public class Veiculo {
     private Integer quilometragem;
     
     @ManyToOne
-    @JoinColumn(name = "cliente_id") // nome da coluna que referencia o cliente
+    //@JoinColumn(name = "cliente_id") // nome da coluna que referencia o cliente
     private Cliente cliente;
     
 }

@@ -1,4 +1,5 @@
 package com.ryan.estacionamento_0.service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ryan.estacionamento_0.domain.Cliente;
@@ -10,6 +11,7 @@ import java.util.Optional;
 @Service
 public class ClienteService {
 
+    @Autowired
     private final ClienteRepository repository;
 
     public ClienteService(ClienteRepository repository) {

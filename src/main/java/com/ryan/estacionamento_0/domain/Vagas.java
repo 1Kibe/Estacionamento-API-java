@@ -18,5 +18,5 @@ public class Vagas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String descrisao;
+    private Integer numeroVagas;
 }

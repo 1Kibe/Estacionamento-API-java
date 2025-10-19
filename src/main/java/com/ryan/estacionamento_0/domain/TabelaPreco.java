@@ -1,7 +1,6 @@
 package com.ryan.estacionamento_0.domain;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
