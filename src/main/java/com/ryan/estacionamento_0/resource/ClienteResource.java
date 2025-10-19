@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.ryan.estacionamento_0.domain.Cliente;
-import com.ryan.estacionamento_0.repository.filter.CaixaFilter;
 import com.ryan.estacionamento_0.repository.filter.ClienteFilter;
 import com.ryan.estacionamento_0.service.ClienteService;
 

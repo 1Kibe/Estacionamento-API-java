@@ -1,13 +1,17 @@
 package com.ryan.estacionamento_0.resource;
 
 import com.ryan.estacionamento_0.domain.CondicaoPagamento;
+import com.ryan.estacionamento_0.repository.filter.CondicaoPagamentoFilter;
 import com.ryan.estacionamento_0.service.CondicaoPagamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/condicao-pagamento")
@@ -26,6 +30,12 @@ public class CondicaoPagamentoResource {
         Optional<CondicaoPagamento> obj = service.findById(id);
         return obj.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+    @GetMapping("/filtro")
+    public Page<CondicaoPagamento> filtro(CondicaoPagamentoFilter filter, Pageable pageable) {
+        return service.filtrar(filter, pageable);
+    }
+    
 
     @PostMapping
     public CondicaoPagamento create(@RequestBody CondicaoPagamento obj) {
